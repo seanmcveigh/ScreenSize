@@ -30,6 +30,9 @@ ScreenSize::init()
 {
     mDisplayRes = mRes = mDisplayInfo.pixelSize();
     mDisplayDirection = OrientationSupport::instance()->displayDirection();
+    if ((mDisplayDirection == 90) || (mDisplayDirection == 270)) {
+        mDisplayRes = QSize(mDisplayRes.height(), mDisplayRes.width());
+    }
     emit resChanged(mRes);
     emit widthChanged(mRes.width());
     emit heightChanged(mRes.height());
